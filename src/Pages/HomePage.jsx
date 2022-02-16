@@ -7,6 +7,7 @@ const HomePage = () => {
   return (
     <div className={css.PageImage}>
       <Header />
+
       <div className={css.content}>
         <h1> Личный юрист </h1>
         <p>Онлайн консультация по любым юридическим вопросам</p>
