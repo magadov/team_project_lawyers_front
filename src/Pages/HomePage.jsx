@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from '../components/Header';
-import css from './MainPage.module.css'
+// import css from './HomePage.module.css'
+import css from '../components/Header/header.module.css'
 
-const MainPage = () => {
+const HomePage = () => {
   return (
     <div className={css.PageImage}>
       <Header />
@@ -29,4 +30,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default HomePage;
