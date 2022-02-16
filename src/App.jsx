@@ -1,4 +1,3 @@
-import Header from './components/Header';
 import MainPage from './Pages/MainPage';
 // import { Routes, Route } from 'react-router-dom';
 
