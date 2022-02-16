@@ -45,3 +45,7 @@ h3 {
   display: flex;
   margin: 40px 40px 0 0;
 }
+
+.navbar-nav .nav-link {
+    color: white;
+  }

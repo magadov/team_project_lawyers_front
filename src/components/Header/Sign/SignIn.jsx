@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button, Modal} from 'react-bootstrap';
 
-const LogIn = () => {
+
+const SignIn = () => {
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);
@@ -10,7 +12,7 @@ const LogIn = () => {
   return (
     <>
       <Button variant="btn btn-outline-success" onClick={handleShow}>
-        Log In
+        Sign in
       </Button>
 
       <Modal show={show} onHide={handleClose} animation={false}>
@@ -31,4 +33,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignIn;
