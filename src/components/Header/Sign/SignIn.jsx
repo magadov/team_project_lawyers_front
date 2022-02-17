@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Modal} from 'react-bootstrap';
+import css from './SignIn.module.css';
 
 
 const SignIn = () => {
@@ -11,21 +12,48 @@ const SignIn = () => {
 
   return (
     <>
-      <Button variant="btn btn-outline-success" onClick={handleShow}>
+      <Button className={css.rightMarg} variant="btn btn-outline-success" onClick={handleShow}>
         Sign in
       </Button>
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Авторизация</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <div className={`form-floating mb-3 ${css.inpStar}`}>
+            <input type="email" className="form-control" id="floatingInput"
+                   placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Логин</label><p className={css.star}>*</p>
+          </div>
+          <div className={`form-floating mb-3 ${css.inpStar}`}>
+          <input type="email" className="form-control" id="floatingInput"
+                 placeholder="name@example.com" />
+          <label htmlFor="floatingInput">Пароль</label><p className={css.star}>*</p>
+        </div>
+          <div className={`form-floating mb-3 ${css.inpStar}`}>
+          <input type="email" className="form-control" id="floatingInput"
+                 placeholder="name@example.com" />
+          <label htmlFor="floatingInput">Имя</label><p className={css.star}>*</p>
+        </div>
+          <div className={`form-floating mb-3 ${css.inpStar}`}>
+          <input type="email" className="form-control" id="floatingInput"
+                 placeholder="name@example.com" />
+          <label htmlFor="floatingInput">Фамилия</label><p className={css.star}>*</p>
+        </div>
+          <div className="form-floating mb-3">
+          <input type="email" className="form-control" id="floatingInput"
+                 placeholder="name@example.com" />
+          <label htmlFor="floatingInput">Отчество</label>
+        </div>
+
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Закрыть
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Зарегистрироваться
           </Button>
         </Modal.Footer>
       </Modal>

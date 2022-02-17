@@ -1,0 +1,11 @@
+.inpStar {
+  display: flex;
+}
+.star{
+  line-height: 350%;
+  margin-left: 5px;
+  color: red;
+}
+.rightMarg{
+  margin-right: 15px;
+}
