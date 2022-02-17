@@ -20,7 +20,7 @@ const Header = () => {
         <div className={`collapse navbar-collapse  ${css.menu}`} id="navbarSupportedContent">
           <ul className={`navbar-nav me-auto mb-2 mb-lg-0 `}>
             <li className={`nav-item  ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/categories">
                 Категории
               </NavLink>
             </li>
