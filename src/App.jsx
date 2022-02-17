@@ -4,6 +4,7 @@ import CategoryPage from './Pages/CategoryPage';
 
 function App() {
   return (
+
     <div className='App'>
     <Routes>
       <Route path="/" element={<HomePage/>} />
