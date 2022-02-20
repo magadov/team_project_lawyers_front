@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import css from '../Sign/SignIn.module.css';
 
 const LogIn = () => {
-  const [show, setShow] = React.useState(false);
+
+  const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,18 +16,18 @@ const LogIn = () => {
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Авторизация</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className={`form-floating mb-3 ${css.inpStar}`}>
-            <input type="email" className="form-control" id="floatingInput"
+          <div className={`form-floating mb-3`}>
+            <input type="text" className="form-control" id="floatingInput"
                    placeholder="name@example.com" />
-            <label htmlFor="floatingInput">Логин</label><p className={css.star}>*</p>
+            <label htmlFor="floatingInput">Логин</label>
           </div>
-          <div className={`form-floating mb-3 ${css.inpStar}`}>
-            <input type="email" className="form-control" id="floatingInput"
+          <div className={`form-floating mb-3`}>
+            <input type="password" className="form-control" id="floatingInput"
                    placeholder="name@example.com" />
-            <label htmlFor="floatingInput">Пароль</label><p className={css.star}>*</p>
+            <label htmlFor="floatingInput">Пароль</label>
           </div>
         </Modal.Body>
         <Modal.Footer>
