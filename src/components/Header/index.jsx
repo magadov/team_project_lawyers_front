@@ -4,6 +4,7 @@ import css from "./header.module.css";
 import logo from "../../assets/logo.png";
 import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
+import Profile from "../Profile";
 
 
 const Header = () => {
@@ -48,6 +49,7 @@ const Header = () => {
           <form className="d-flex">
             <SignIn />
             <LogIn />
+            <Profile/>
           </form>
         </div>
 
