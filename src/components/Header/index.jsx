@@ -4,9 +4,11 @@ import css from "./header.module.css";
 import logo from "../../assets/logo.png";
 import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
+  const token = useSelector(state => state.application.token)
   let {pathname} = useLocation()
    console.log(pathname)
 
@@ -45,10 +47,12 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <form className="d-flex">
+          {token ?  <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/categories">
+            Профиль
+          </NavLink> : (<form className="d-flex">
             <SignIn />
             <LogIn />
-          </form>
+          </form>)}
         </div>
 
       </div>

@@ -1,6 +1,8 @@
 const initialState = {
   signIn: false,
+  doLogin: false,
   error: null,
+  token: localStorage.getItem('token')
 };
 
 export default function application(state = initialState, action) {
@@ -21,6 +23,25 @@ export default function application(state = initialState, action) {
       return {
         ...state,
         signIn: false,
+        error: action.error
+      }
+    case 'application/login/pending':
+      return {
+        ...state,
+        doLogin: true,
+        error: null
+      }
+    case 'application/login/fulfilled':
+      return {
+        ...state,
+        doLogin: false,
+        token: action.payload.token
+      }
+
+    case 'application/login/rejected':
+      return {
+        ...state,
+        doLogin: false,
         error: action.error
       }
     default:
@@ -45,6 +66,30 @@ export const createLawyer = (login, password, name, surname) => {
       dispatch({type: 'application/signIn/rejected', error: json.error });
     }else {
       dispatch({type: 'application/signIn/fulfilled', payload: json })
+    }
+  }
+}
+
+export const auth = (login, password) => {
+  return async dispatch => {
+    dispatch({ type: 'application/login/pending' });
+
+    const response = await fetch('http://localhost:3002/lawyers/login', {
+      method: 'POST',
+      body: JSON.stringify({login, password}),
+      headers: {
+        "Content-type": "application/json"
+      }
+    });
+
+    const json = await response.json();
+
+    if(json.error){
+      dispatch({ type: 'application/login/rejected', error:json.error});
+    } else {
+      dispatch({ type: 'application/login/fulfilled', payload: json});
+
+      localStorage.setItem('token',json.token)
     }
   }
 }
