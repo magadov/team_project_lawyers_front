@@ -1,16 +1,44 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import css from "./header.module.css";
 import logo from "../../assets/logo.png";
 import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
 import { useSelector } from 'react-redux';
 
-
 const Header = () => {
   const token = useSelector(state => state.application.token)
-  let {pathname} = useLocation()
-   console.log(pathname)
+
+  // const anchors = document.querySelectorAll('a[href*="#bottom"]')
+  //
+  // for(let anchor of anchors){
+  //   anchor.addEventListener("click", function(event){
+  //     event.preventDefault();
+  //     const blockID = anchor.getAttribute('href')
+  //     document.querySelector('' + blockID).scrollIntoView({
+  //       behavior: 'smooth',
+  //       block: 'start'
+  //     })
+  //   })
+  // }
+  document.querySelectorAll('a.cont').forEach(link => {
+    link.addEventListener('click', function(e){
+      e.preventDefault()
+
+      const href = this.getAttribute('href').substring(1)
+
+      const scrollTarget = document.getElementById(href)
+
+      const topOffset = 0
+      const elementPosition = scrollTarget
+      const offsetPosition = elementPosition - topOffset
+
+      window.scrollBy(({
+        top:offsetPosition,
+        behavior: 'smooth',
+      }))
+    })
+  })
 
   return (
     <nav className={`navbar navbar-expand-lg ${css.header}`}>
@@ -27,9 +55,9 @@ const Header = () => {
               </NavLink>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <a className={`nav-link active`} aria-current="page" href="#cont">
                 Как это работает
-              </NavLink>
+              </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
               <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
