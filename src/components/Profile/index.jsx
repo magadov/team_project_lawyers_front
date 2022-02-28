@@ -46,7 +46,9 @@ const Modal = ({ name, ...props }) => {
   const [lawyerEmailEditText, setLawyerEmailEditText] = React.useState("");
 
   const handleClose = () => setShow(false);
+
   const handleShow = () => setShow(true);
+
   const handleOpenEdit = () => setOpen(true);
   const handleEditClose = () => setOpen(false);
 
