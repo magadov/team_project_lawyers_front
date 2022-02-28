@@ -5,11 +5,11 @@ import logo from "../../assets/logo.png";
 import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
 import Profile from "../Profile";
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
-  let {pathname} = useLocation()
-   console.log(pathname)
+  const token = useSelector(state => state.application.token)
 
   return (
     <nav className={`navbar navbar-expand-lg ${css.header}`}>
@@ -46,13 +46,13 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <form className="d-flex">
+          {token ?  <Profile className={`nav-link active  ${css.dtt}`} aria-current="page" to="/categories"/>
+              :
+              (<form className="d-flex">
             <SignIn />
             <LogIn />
-            <Profile/>
-          </form>
+          </form>)}
         </div>
-
       </div>
     </nav>
   );
