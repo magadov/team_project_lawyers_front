@@ -1,0 +1,16 @@
+.content1{
+  margin: 20px 50px 30px 150px
+}
+.content2{
+  margin: 20px 50px 30px 30px
+}
+.content3{
+  margin: 20px 150px 30px 30px
+}
+img {
+  margin-bottom: 20px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}

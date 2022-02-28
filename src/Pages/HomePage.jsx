@@ -2,9 +2,11 @@ import React from 'react';
 import Header from '../components/Header';
 // import css from './HomePage.module.css'
 import css from '../components/Header/header.module.css'
+import HowItsWork from '../components/HowItsWork/HowItsWork';
 
 const HomePage = () => {
   return (
+    <>
     <div className={css.PageImage}>
       <Header />
 
@@ -28,6 +30,8 @@ const HomePage = () => {
         <button type="button" className="btn btn-info btn-lg">Оставить заявку</button>
       </div>
     </div>
+      <HowItsWork />
+      </>
   );
 };
 

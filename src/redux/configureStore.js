@@ -3,11 +3,12 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import application from './features/application';
 import {profileReducer} from "./features/profileReducer";
+import categories from './features/categories';
 
 const store = createStore(
   combineReducers({
-    application,
-    lawyerProfile: profileReducer
+    application, categories,
+      lawyerProfile: profileReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );

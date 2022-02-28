@@ -18,10 +18,19 @@ const Modal = ({ name, ...props }) => {
     background-color: #1f90fa;
     border: none;
     color: white;
-    margin: 10px 10px 0 0;
+    margin: 10px 10px 0 30px;
     &:hover {
       background-color: #1f90fa;
     }
+  `
+
+  const Profile = styled(Button) `
+  background: none;
+  border: none;
+  &:hover {
+    border: none;
+    background: none;
+  }  
   `
 
   useEffect(() => {
@@ -60,9 +69,9 @@ const Modal = ({ name, ...props }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
-        {name}
-      </Button>
+      <Profile variant="primary" onClick={handleShow} className="me-2">
+        Профиль
+      </Profile>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Body>
           <div className={css.avatarBlock}>
