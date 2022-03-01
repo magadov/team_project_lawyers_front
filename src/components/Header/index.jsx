@@ -5,6 +5,7 @@ import logo from "../../assets/logo.png";
 import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
 import { useSelector } from 'react-redux';
+import Profile from "../Profile";
 
 const Header = () => {
   const token = useSelector(state => state.application.token)
@@ -75,9 +76,8 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          {token ?  <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/categories">
-            Профиль
-          </NavLink> : (<form className="d-flex">
+
+          {token ? <Profile/> : (<form className="d-flex">
             <SignIn />
             <LogIn />
           </form>)}
