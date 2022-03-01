@@ -34,7 +34,7 @@ export const fetchAllCategories = () => {
   return async (dispatch) => {
     dispatch({ type: "category/fetch/pending" });
     try {
-      const res = await fetch("http://localhost:3002/categories");
+      const res = await fetch("http://localhost:3003/categories");
       const json = await res.json();
 
       dispatch({ type: "category/fetch/fulfilled", payload: json });
