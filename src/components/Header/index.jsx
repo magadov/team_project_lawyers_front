@@ -5,22 +5,13 @@ import logo from "../../assets/logo.png";
 import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 
 const Header = () => {
   const token = useSelector(state => state.application.token)
 
-  // const anchors = document.querySelectorAll('a[href*="#bottom"]')
-  //
-  // for(let anchor of anchors){
-  //   anchor.addEventListener("click", function(event){
-  //     event.preventDefault();
-  //     const blockID = anchor.getAttribute('href')
-  //     document.querySelector('' + blockID).scrollIntoView({
-  //       behavior: 'smooth',
-  //       block: 'start'
-  //     })
-  //   })
-  // }
+  const CustomNavLink  = styled(NavLink) `color: white;`;
+
   document.querySelectorAll('a.cont').forEach(link => {
     link.addEventListener('click', function(e){
       e.preventDefault()
@@ -50,9 +41,9 @@ const Header = () => {
         <div className={`collapse navbar-collapse  ${css.menu}`} id="navbarSupportedContent">
           <ul className={`navbar-nav me-auto mb-2 mb-lg-0 `}>
             <li className={`nav-item  ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/categories">
+              <CustomNavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/categories">
                 Категории
-              </NavLink>
+              </CustomNavLink>
             </li>
             <li className={`nav-item ${css.nav}`}>
               <a className={`nav-link active`} aria-current="page" href="#cont">
@@ -65,9 +56,9 @@ const Header = () => {
               </NavLink>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <a className={`nav-link active  ${css.dtt}`} aria-current="page" href="#contact">
                 Контакты
-              </NavLink>
+              </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
               <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">

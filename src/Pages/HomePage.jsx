@@ -3,13 +3,13 @@ import Header from '../components/Header';
 // import css from './HomePage.module.css'
 import css from '../components/Header/header.module.css'
 import HowItsWork from '../components/HowItsWork/HowItsWork';
+import Contacts from '../components/Categories/Contacts/Contacts';
 
 const HomePage = () => {
   return (
     <>
     <div className={css.PageImage}>
       <Header />
-
       <div className={css.content}>
         <h1> Личный юрист </h1>
         <p>Онлайн консультация по любым юридическим вопросам</p>
@@ -31,6 +31,7 @@ const HomePage = () => {
       </div>
     </div>
       <HowItsWork />
+      <Contacts />
       </>
   );
 };
