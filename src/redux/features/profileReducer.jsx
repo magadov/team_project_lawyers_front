@@ -2,6 +2,7 @@ const initialState = {
   lawyer: [],
   categories: [],
   error: null
+
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -167,15 +168,4 @@ export const createServices = (text, price) => {
     }
   };
 };
-// export const fetchAllCategories = () => {
-//   return async (dispatch) => {
-//     dispatch({ type: "category/fetch/pending" });
-//     try {
-//       const res = await fetch("http://localhost:3003/categories");
-//       const json = await res.json();
-//
-//       dispatch({ type: "category/fetch/fulfilled", payload: json });
-//     } catch (e) {
-//       dispatch({ type: "category/fetch/rejected", error: e.toString() });
-//     }
-//   };
+
