@@ -50,3 +50,9 @@ h3 {
 .navbar  {
   color: white;
 }
+.whiteLink {
+  color: white!important;
+}
+.whiteLink:hover {
+  color: #1f90fa!important;
+}

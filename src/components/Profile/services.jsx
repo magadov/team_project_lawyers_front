@@ -2,9 +2,7 @@ import React, {useEffect} from 'react';
 import {Button, Form, Modal} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {loadCategories} from "../../redux/features/profileReducer";
-import css from './services.module.css'
 import styled from "styled-components";
-import lawyer from "../Lawyer/Lawyer";
 
 const Window = (props) => {
     const categories = useSelector(state => state.lawyerReducer.categories)
@@ -32,7 +30,7 @@ const Window = (props) => {
                     <Form.Select aria-label="Default select example">
                         {categories.map ((cate) => {
                             return (
-                                    <option>{cate.name}</option>
+                                    <option key={cate._id}>{cate.name}</option>
                             )
                         })}
                     </Form.Select>
@@ -45,25 +43,21 @@ const Window = (props) => {
     );
 };
 
-function Services() {
-    const Button = styled.button `
-      background-color: #1f90fa;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      margin: 20px 0 0 30px;
-      padding: 5px;
-      &:hover {
-        background-color: #1f90fa;
-      }
+function Service() {
+    const CreateButton = styled.button `
+        background-color: white;
+        border: none;
+        &:hover {
+            border-bottom: 1px solid #1f90fa;
+        }
     `
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
-            <Button  onClick={() => setModalShow(true)}>
-                Добавить услуги
-            </Button>
+            <CreateButton  onClick={() => setModalShow(true)}>
+                Выбрать услугу
+            </CreateButton>
 
             <Window
                 show={modalShow}
@@ -73,4 +67,4 @@ function Services() {
     );
 }
 
-export default Services;
+export default Service;

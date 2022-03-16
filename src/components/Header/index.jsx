@@ -6,12 +6,9 @@ import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
 import { useSelector } from 'react-redux';
 import Profile from "../Profile";
-import styled from 'styled-components';
 
 const Header = () => {
   const token = useSelector(state => state.application.token)
-
-  const CustomNavLink  = styled(NavLink) `color: white;`;
 
   document.querySelectorAll('a.cont').forEach(link => {
     link.addEventListener('click', function(e){
@@ -42,27 +39,27 @@ const Header = () => {
         <div className={`collapse navbar-collapse  ${css.menu}`} id="navbarSupportedContent">
           <ul className={`navbar-nav me-auto mb-2 mb-lg-0 `}>
             <li className={`nav-item  ${css.nav}`}>
-              <CustomNavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/categories">
+              <NavLink className={`nav-link active ${css.whiteLink} ${css.dtt}`} aria-current="page" to="/categories">
                 Категории
-              </CustomNavLink>
+              </NavLink>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <a className={`nav-link active`} aria-current="page" href="#cont">
+              <a className={`nav-link ${css.whiteLink} active`} aria-current="page" href="#cont">
                 Как это работает
               </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <NavLink className={`nav-link active ${css.whiteLink} ${css.dtt}`} aria-current="page" to="/">
                 Новости
               </NavLink>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <a className={`nav-link active  ${css.dtt}`} aria-current="page" href="#contact">
+              <a className={`nav-link active ${css.whiteLink}  ${css.dtt}`} aria-current="page" href="#contact">
                 Контакты
               </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <NavLink className={`nav-link active ${css.whiteLink} ${css.dtt}`} aria-current="page" to="/">
                 О нас
               </NavLink>
             </li>
