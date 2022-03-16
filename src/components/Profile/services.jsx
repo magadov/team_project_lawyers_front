@@ -32,6 +32,8 @@ const Window = (props) => {
                     <Form.Select aria-label="Default select example">
                         {categories.map ((cate) => {
                             return (
+
+                                    <option key={cate._id}>{cate.name}</option>
                                     <option>{cate.name}</option>
                             )
                         })}
@@ -45,22 +47,23 @@ const Window = (props) => {
     );
 };
 
-function Services() {
-    const Button = styled.button `
-      background-color: #1f90fa;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      margin: 20px 0 0 30px;
-      padding: 5px;
-      &:hover {
-        background-color: #1f90fa;
-      }
+function Service() {
+    const CreateButton = styled.button `
+        background-color: white;
+        border: none;
+        &:hover {
+            border-bottom: 1px solid #1f90fa;
+        }
+
     `
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
+
+            <CreateButton  onClick={() => setModalShow(true)}>
+                Выбрать услугу
+            </CreateButton>
             <Button  onClick={() => setModalShow(true)}>
                 Добавить услуги
             </Button>
@@ -73,4 +76,5 @@ function Services() {
     );
 }
 
-export default Services;
+export default Service;
+
