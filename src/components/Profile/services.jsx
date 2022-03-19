@@ -32,9 +32,7 @@ const Window = (props) => {
                     <Form.Select aria-label="Default select example">
                         {categories.map ((cate) => {
                             return (
-
                                     <option key={cate._id}>{cate.name}</option>
-                                    <option>{cate.name}</option>
                             )
                         })}
                     </Form.Select>
@@ -60,13 +58,9 @@ function Service() {
 
     return (
         <>
-
             <CreateButton  onClick={() => setModalShow(true)}>
                 Выбрать услугу
             </CreateButton>
-            <Button  onClick={() => setModalShow(true)}>
-                Добавить услуги
-            </Button>
 
             <Window
                 show={modalShow}

@@ -122,3 +122,14 @@ label span input {
 .duoEditBtn {
     margin: 10px 0 0 30px;
 }
+
+.myServicesButton {
+    margin: 20px 0 0 25px;
+    border: none;
+    background-color: white;
+    color: black;
+}
+
+.myServicesButton:active {
+    border-bottom: 1px solid #1f90fa;
+}
