@@ -7,11 +7,8 @@ import {
 } from "../../redux/features/profileReducer";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./profile.module.css";
-import Services from "./services";
 import styled from "styled-components";
-import CreateServices from './CreateServices';
-import MyServicesList from './MyServicesList';
-
+import MyServicesList from "./MyServicesList";
 
 const Modal = ({ name, ...props }) => {
   const lawyer = useSelector((state) => state.lawyerReducer.lawyer);
@@ -27,6 +24,16 @@ const Modal = ({ name, ...props }) => {
     }
   `;
 
+  const StyledButton = styled(Button)`
+    background: none;
+    border: none;
+    font-size: 18px;
+    margin-top: 10px;
+    &:hover {
+      background: none;
+    }
+  `;
+
   useEffect(() => {
     dispatch(loadLawyer());
   }, [dispatch]);
@@ -34,9 +41,8 @@ const Modal = ({ name, ...props }) => {
   const [show, setShow] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
-  const [setFile] = React.useState(null);
-  const [openList, setOpenList] = React.useState(false)
-
+  const [file, setFile] = React.useState(null);
+  const [openList, setOpenList] = React.useState(false);
 
   const [lawyerNameEditText, setLawyerNameEditText] = React.useState("");
   const [lawyerSurnameEditText, setLawyerSurnameEditText] = React.useState("");
@@ -46,7 +52,6 @@ const Modal = ({ name, ...props }) => {
   const handleShow = () => setShow(true);
   const handleOpenEdit = () => setOpen(true);
   const handleOpenList = () => setOpenList(true);
-
 
   const handleChangeName = (e) => {
     setLawyerNameEditText(e.target.value);
@@ -66,193 +71,105 @@ const Modal = ({ name, ...props }) => {
   };
 
   return (
-
-        <>
-          <Button variant="primary" onClick={handleShow} className="me-2">
-            {name}
-          </Button>
-          <Offcanvas show={show} onHide={handleClose} {...props}>
-            <Offcanvas.Body>
-              {
-                openList ? <MyServicesList/> :
-                 <>
-                  <div className={css.avatarBlock}>
-                    <img
-                      alt={"img"}
-                      className={css.avatar}
-                      src={`http://localhost:3003/${lawyer.img}`}
-                    />
-                  </div>
-                <div className={css.editButton}>
-                <label className={css.filebutton}>
-                <span>
-                <input
-                className="form-control"
-                type="file"
-                id="formFile"
-                accept="image/*"
-                onChange={handleChangeImage}
-                name="img"
-                />
-                Изменить фотографию
-                </span>
-                </label>
-                </div>
-              {open ? (
-                <>
-                <div className={css.lawyersInfoEdit}>
-                <span className={css.FIO}> Имя: </span>
-                <input
-                type="text"
-                onChange={handleChangeName}
-                placeholder="введите имя..."
-                />
-                <span className={css.FIO}>Фамилия:</span>
-                <input
-                placeholder="введите фамилию..."
-                onChange={handleChangeSurname}
-                />
-                <span className={css.FIO}>Электронная почта:</span>
-                <input
-                placeholder="введите почту..."
-                onChange={handleChangeEmail}
-                />
-                <div className={css.duoEditBtn}>
-                <CloseButton
-                variant="primary"
-                onClick={() => setOpen(false)}
-                className={css.closeButton}
-                >
-                Закрыть
-                </CloseButton>{" "}
-                <LoadingButton
-                name={
-                !lawyerNameEditText ? lawyer.name : lawyerNameEditText
-              }
-                email={
-                !lawyerEmailEditText ? lawyer.email : lawyerEmailEditText
-              }
-                surname={
-                !lawyerSurnameEditText ? lawyer.surname : lawyerSurnameEditText
-              }
-                />
-                </div>
-                </div>
-                </>
-                ) : (
-                <>
-                <div className={css.lawyersInfo}>
     <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
-        {name}
-      </Button>
+      <StyledButton variant="primary" onClick={handleShow} className="me-2">
+        Профиль
+      </StyledButton>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Body>
-          <div className={css.avatarBlock}>
-            <img
-              className={css.avatar}
-              src={`http://localhost:3003/${lawyer.img}`}
-            />
-          </div>
-          <div className={css.editButton}>
-            <label className={css.filebutton}>
-              <span>
-                <input
-                  className="form-control"
-                  type="file"
-                  id="formFile"
-                  accept="image/*"
-                  onChange={handleChangeImage}
-                  name="img"
-                />
-                Изменить фотографию
-              </span>
-            </label>
-          </div>
-          {open ? (
-            <>
-              <div className={css.lawyersInfoEdit}>
-                <span className={css.FIO}> Имя: </span>
-                <input
-                  type="text"
-                  onChange={handleChangeName}
-                  placeholder="введите имя..."
-                />
-                <span className={css.FIO}>Фамилия:</span>
-                <input
-                  placeholder="введите фамилию..."
-                  onChange={handleChangeSurname}
-                />
-                <span className={css.FIO}>Электронная почта:</span>
-                <input
-                  placeholder="введите почту..."
-                  onChange={handleChangeEmail}
-                />
-                <div className={css.duoEditBtn}>
-                  <CloseButton
-                    variant="primary"
-                    onClick={() => setOpen(false)}
-                    className={css.closeButton}
-                  >
-                    Закрыть
-                  </CloseButton>{" "}
-                  <LoadingButton
-                    name={
-                      !lawyerNameEditText ? lawyer.name : lawyerNameEditText
-                    }
-                    email={
-                      !lawyerEmailEditText ? lawyer.email : lawyerEmailEditText
-                    }
-                    surname={
-                    !lawyerSurnameEditText ? lawyer.surname : lawyerSurnameEditText
-                    }
-                  />
-                </div>
-              </div>
-            </>
+          {openList ? (
+            <MyServicesList/>
           ) : (
             <>
-              <div className={css.lawyersInfo}>
-
-                <span className={css.FIO}> Имя:</span>
-                <li className={css.text}> {lawyer.name}</li>
-                <span className={css.FIO}> Фамилия:</span>
-                <li className={css.text}> {lawyer.surname}</li>
-                <span className={css.FIO}> Электронная почта:</span>
-                <li className={css.text}> {lawyer.email}</li>
-                <CloseButton
-
-                variant="primary"
-                className={css.editBtn}
-                onClick={handleOpenEdit}
-                >
-              {" "}
-                Редактировать данные{" "}
-                </CloseButton>
-                </div>
-                <Services />
-                <CreateServices />
-                <button onClick={handleOpenList}> Мои услуги </button>
-                </>
-                )}
-                 </>
-              }
-            </Offcanvas.Body>
-          </Offcanvas>
-        </>
-
-                  variant="primary"
-                  className={css.editBtn}
-                  onClick={handleOpenEdit}
-                >
-                  {" "}
-                  Редактировать данные{" "}
-                </CloseButton>
+              <div className={css.avatarBlock}>
+                <img
+                  alt={"img"}
+                  className={css.avatar}
+                  src={`http://localhost:3003/${lawyer.img}`}
+                />
               </div>
-              <Services />
+              <div className={css.editButton}>
+                <label className={css.filebutton}>
+                  <span>
+                    <input
+                      className="form-control"
+                      type="file"
+                      id="formFile"
+                      accept="image/*"
+                      onChange={handleChangeImage}
+                      name="img"
+                    />
+                    Изменить фотографию
+                  </span>
+                </label>
+              </div>
+              {open ? (
+                <>
+                  <div className={css.lawyersInfoEdit}>
+                    <span className={css.FIO}> Имя: </span>
+                    <input
+                      type="text"
+                      onChange={handleChangeName}
+                      placeholder="введите имя..."
+                    />
+                    <span className={css.FIO}>Фамилия:</span>
+                    <input
+                      placeholder="введите фамилию..."
+                      onChange={handleChangeSurname}
+                    />
+                    <span className={css.FIO}>Электронная почта:</span>
+                    <input
+                      placeholder="введите почту..."
+                      onChange={handleChangeEmail}
+                    />
+                    <div className={css.duoEditBtn}>
+                      <CloseButton
+                        variant="primary"
+                        onClick={() => setOpen(false)}
+                        className={css.closeButton}
+                      >
+                        Закрыть
+                      </CloseButton>{" "}
+                      <LoadingButton
+                        name={
+                          !lawyerNameEditText ? lawyer.name : lawyerNameEditText
+                        }
+                        email={
+                          !lawyerEmailEditText
+                            ? lawyer.email
+                            : lawyerEmailEditText
+                        }
+                        surname={
+                          !lawyerSurnameEditText
+                            ? lawyer.surname
+                            : lawyerSurnameEditText
+                        }
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className={css.lawyersInfo}>
+                    <span className={css.FIO}> Имя:</span>
+                    <li className={css.text}> {lawyer.name}</li>
+                    <span className={css.FIO}> Фамилия:</span>
+                    <li className={css.text}> {lawyer.surname}</li>
+                    <span className={css.FIO}> Электронная почта:</span>
+                    <li className={css.text}> {lawyer.email}</li>
+                    <CloseButton
+                      variant="primary"
+                      className={css.editBtn}
+                      onClick={handleOpenEdit}
+                    >
+                      Редактировать данные{" "}
+                    </CloseButton>
+                  </div>
+                  <button className={css.myServicesButton} onClick={handleOpenList}> Мои услуги </button>
+                </>
+              )}
             </>
           )}
-          {/*<Services/>*/}
         </Offcanvas.Body>
       </Offcanvas>
     </>
