@@ -17,7 +17,7 @@ const Lawyer = () => {
         {lawyers.map((lawyer) => {
           return (
             <div key={lawyer._id} className={`card ${styles.cardDiv}`}>
-              <img src={lawyer.img} className="card-img-top" alt="..."/>
+              <img src={`http://localhost:3003/${lawyer.img}`} className="card-img-top" alt="..."/>
               <div className="card-body">
                 <h5 className="card-title">{lawyer.name} {lawyer.surname}</h5>
                 <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur cum doloribus eligendi eos excepturi illo ipsa laborum numquam, obcaecati quas ratione repellat tempora. Commodi consectetur eveniet id, magni nisi porro.</p>

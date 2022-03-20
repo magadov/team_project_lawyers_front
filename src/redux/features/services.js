@@ -34,7 +34,7 @@ export const fetchAllServices = () => {
   return async (dispatch) => {
     dispatch({ type: "service/fetch/pending" });
     try {
-      const res = await fetch("http://localhost:3002/services");
+      const res = await fetch("http://localhost:3003/services");
       const json = await res.json()
 
       dispatch({ type: "service/fetch/fulfilled", payload: json})

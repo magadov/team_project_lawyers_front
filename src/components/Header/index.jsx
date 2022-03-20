@@ -6,12 +6,29 @@ import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
 import { useSelector } from 'react-redux';
 import Category from '../Categories';
-
+import Profile from "../Profile";
 
 const Header = () => {
   const token = useSelector(state => state.application.token)
-  let {pathname} = useLocation()
-   console.log(pathname)
+
+  document.querySelectorAll('a.cont').forEach(link => {
+    link.addEventListener('click', function(e){
+      e.preventDefault()
+
+      const href = this.getAttribute('href').substring(1)
+
+      const scrollTarget = document.getElementById(href)
+
+      const topOffset = 0
+      const elementPosition = scrollTarget
+      const offsetPosition = elementPosition - topOffset
+
+      window.scrollBy(({
+        top:offsetPosition,
+        behavior: 'smooth',
+      }))
+    })
+  })
 
   return (
     <nav className={`navbar navbar-expand-lg ${css.header}`}>
@@ -46,16 +63,13 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          {token ?  <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
-            Профиль
-          </NavLink> : (<form className="d-flex">
+          {token ? <Profile/> : (<form className="d-flex">
             <SignIn />
             <LogIn />
           </form>)}
         </div>
       </div>
     </nav>
-
   );
 };
 

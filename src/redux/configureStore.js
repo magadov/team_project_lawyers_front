@@ -5,13 +5,15 @@ import application from "./features/application";
 import categories from "./features/categories";
 import services from "./features/services";
 import lawyers from './features/lawyers';
+import {profileReducer} from "./features/profileReducer";
 
 const store = createStore(
   combineReducers({
     application,
     categories,
     services,
-    lawyers
+    lawyers,
+      lawyerReducer: profileReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );

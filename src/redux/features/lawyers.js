@@ -34,7 +34,7 @@ export const fetchAllLawyers = () => {
   return async (dispatch) => {
     dispatch({ type: "lawyer/fetch/pending" });
     try {
-      const res = await fetch("http://localhost:3002/lawyers");
+      const res = await fetch("http://localhost:3003/lawyers");
       const json = await res.json()
 
       dispatch({ type: "lawyer/fetch/fulfilled", payload: json})

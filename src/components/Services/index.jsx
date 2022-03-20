@@ -1,11 +1,18 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import css from "../Categories/styles.module.css";
+import { fetchAllServices } from '../../redux/features/services';
 
 const Services = ({ categoryId }) => {
 
   const services = useSelector((state) => state.services.services);
   const servicesByCat = services.filter((service) => service.categories === categoryId);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchAllServices())
+  },[dispatch])
 
   return (
     <div>
