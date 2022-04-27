@@ -70,7 +70,6 @@ const Header = () => {
             <LogIn />
           </form>)}
         </div>
-
       </div>
     </nav>
   );

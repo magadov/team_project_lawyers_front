@@ -1,6 +1,7 @@
 const initialState = {
   lawyer: [],
   categories: [],
+  services: [],
   error: null,
 };
 
@@ -44,12 +45,12 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         lawyer: { ...state.lawyer, ...action.payload },
       };
-    case "add/services/rejected":
+    case "create/services/rejected":
       return {
         ...state,
         error: action.error,
       };
-    case "add/services/fulfilled":
+    case "create/services/fulfilled":
       return {
         ...state,
         lawyer: { ...state.lawyer, ...action.payload },
@@ -59,6 +60,36 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         lawyer: { ...state.lawyer, ...action.payload },
       };
+    case "DELETE_SERVICES_REJECTED":
+      return {
+        ...state,
+        error: action.error,
+      };
+    case "LOAD_SERVICES":
+      return {
+        ...state,
+        services: action.payload
+      }
+    case "LOAD_SERVICES_REJECTED":
+      return {
+        ...state,
+        error: action.error,
+      };
+    case "add/services/fulfilled":
+      return {
+        ...state,
+        lawyer: { ...state.lawyer, ...action.payload },
+      };
+    case "DELETE_SERV":
+      return {
+        ...state,
+        lawyer: {...state.lawyer, ...action.payload }
+      }
+    case "DELETE_SERV_REJECTED":
+      return {
+        ...state,
+        error: action.message
+      }
     default:
       return state;
   }
@@ -164,9 +195,9 @@ export const createServices = (text, price) => {
         },
       });
       const json = await res.json();
-      dispatch({ type: "add/services/fulfilled", payload: json });
+      dispatch({ type: "create/services/fulfilled", payload: json });
     } catch (e) {
-      dispatch({ type: "add/services/rejected", error: e.message });
+      dispatch({ type: "create/services/rejected", error: e.message });
     }
   };
 };
@@ -181,12 +212,69 @@ export const deleteServices = (id) => {
         },
       })
       const json =  await res.json()
+      console.log(json)
       dispatch({
         type: "DELETE_SERVICES",
         payload: json,
       });
     }catch (e) {
       dispatch({type: "DELETE_SERVICES_REJECTED", error: e.message })
+    }
+  };
+};
+
+export const loadServices = () => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`http://localhost:3003/services`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      const json =  await res.json()
+      dispatch({
+        type: "LOAD_SERVICES",
+        payload: json,
+      });
+    }catch (e) {
+      dispatch({type: "LOAD_SERVICES_REJECTED", error: e.message })
+    }
+  };
+};
+export const addServices = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`http://localhost:3003/lawyers/service/add/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const json = await res.json();
+      dispatch({ type: "add/services/fulfilled", payload: json });
+    } catch (e) {
+      dispatch({ type: "add/services/rejected", error: e.message });
+    }
+  };
+};
+
+export const deleteServ = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`http://localhost:3003/lawyers/service/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      const json =  await res.json()
+      dispatch({
+        type: "DELETE_SERV",
+        payload: json,
+      });
+    }catch (e) {
+      dispatch({type: "DELETE_SERV_REJECTED", error: e.message })
     }
   };
 };

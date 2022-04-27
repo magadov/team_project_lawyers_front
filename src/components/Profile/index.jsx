@@ -12,6 +12,7 @@ import MyServicesList from "./MyServicesList";
 
 const Modal = ({ name, ...props }) => {
   const lawyer = useSelector((state) => state.lawyerReducer.lawyer);
+  console.log(lawyer)
   const dispatch = useDispatch();
 
   const CloseButton = styled(Button)`
