@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import css from '../components/Header/header.module.css'
 import HowItsWork from '../components/HowItsWork/HowItsWork';
 import Contacts from '../components/Categories/Contacts/Contacts';
+import Footer from '../components/Footer';
 
 const HomePage = () => {
   return (
@@ -31,6 +32,7 @@ const HomePage = () => {
     </div>
       <HowItsWork />
       <Contacts />
+      <Footer/>
       </>
   );
 };

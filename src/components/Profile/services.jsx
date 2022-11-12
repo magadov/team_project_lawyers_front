@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import {Button, Form, Modal} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {loadCategories} from "../../redux/features/profileReducer";
@@ -6,6 +6,18 @@ import styled from "styled-components";
 
 const Window = (props) => {
     const categories = useSelector(state => state.lawyerReducer.categories)
+    const services = useSelector((state) => state.lawyerReducer.services)
+    //
+    // const [serviceCat, setServiceCat] = useState(null);
+    //
+    // const filteredServ = services.filter()
+    //
+    // const handleChange = (e) => {
+    //     const {value} = e.target;
+    //     setServiceCat(value)
+    // }
+
+
     const dispatch =  useDispatch();
 
     useEffect(() => {
@@ -27,12 +39,15 @@ const Window = (props) => {
             <Modal.Body>
                 <h4>Выберите категорию:</h4>
                 <p>
-                    <Form.Select aria-label="Default select example">
+                    <Form.Select aria-label="Default select example" >
                         {categories.map ((cate) => {
                             return (
                                     <option key={cate._id}>{cate.name}</option>
                             )
                         })}
+                    </Form.Select>
+                    <Form.Select aria-label="Default select example">
+
                     </Form.Select>
                 </p>
             </Modal.Body>

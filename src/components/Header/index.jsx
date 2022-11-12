@@ -43,22 +43,17 @@ const Header = () => {
               <Category/>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <a className={`nav-link active  ${css.whiteLink}`} aria-current="page" href="#cont">
                 Как это работает
-              </NavLink>
+              </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
-                Новости
-              </NavLink>
-            </li>
-            <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <a className={`nav-link active  ${css.whiteLink}`} aria-current="page" href="#contact">
                 Контакты
-              </NavLink>
+              </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active  ${css.dtt}`} aria-current="page" to="/">
+              <NavLink className={`nav-link active  ${css.whiteLink}`} aria-current="page" to="/">
                 О нас
               </NavLink>
             </li>

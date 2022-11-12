@@ -14,7 +14,7 @@ const Category = () => {
 
   return (
     <div className={`dropdown show ${css.drop}`}>
-      <NavLink   className={`nav-link active  ${css.dtt}`} to="/" role="button"
+      <NavLink   className={`nav-link active  ${css.whiteLink}`} to="/" role="button"
                  id="dropdownMenuLink"  aria-haspopup="true"
                  aria-expanded="false">
         Категории

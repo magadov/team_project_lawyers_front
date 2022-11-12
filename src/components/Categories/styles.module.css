@@ -24,6 +24,13 @@
   cursor: pointer;
   display: block;
   background-color: #5facde;
+
+}
+.whiteLink {
+  color: white!important;
+}
+.whiteLink:hover {
+  color: #1f90fa!important;
 }
 /*.menu .submenu {*/
 /*  opacity: 0; !* По умолчанию скрываем подменю *!*/
