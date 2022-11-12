@@ -1,3 +1,5 @@
+import { serverUrl } from '../../serverUrl';
+
 const initialState = {
   lawyer: [],
   categories: [],
@@ -98,7 +100,7 @@ export const profileReducer = (state = initialState, action) => {
 export const loadLawyer = () => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/lawyers/profile", {
+      const res = await fetch(`${serverUrl}/lawyers/profile`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -117,7 +119,7 @@ export const uploadAvatar = (file) => {
     const formData = new FormData();
     formData.append("img", file);
 
-    fetch("http://localhost:3003/lawyers/updateImg", {
+    fetch(`${serverUrl}/lawyers/updateImg`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -134,7 +136,7 @@ export const uploadAvatar = (file) => {
 export const loadCategories = () => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/categories");
+      const res = await fetch(`${serverUrl}/categories`);
       const json = await res.json();
       dispatch({ type: "load/categories/fulfilled", payload: json });
     } catch (e) {
@@ -150,7 +152,7 @@ export const editLawyersInfo = (name, surname, email) => {
     email,
   };
   return (dispatch) => {
-    fetch("http://localhost:3003/lawyers/edit", {
+    fetch(`${serverUrl}/lawyers/edit`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
@@ -168,7 +170,7 @@ export const editLawyersInfo = (name, surname, email) => {
 export const loadMyList = () => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/lawyers/profile", {
+      const res = await fetch(`${serverUrl}/lawyers/profile`, {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -186,7 +188,7 @@ export const loadMyList = () => {
 export const createServices = (text, price) => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/lawyers/add", {
+      const res = await fetch(`${serverUrl}/lawyers/add`, {
         method: "PATCH",
         body: JSON.stringify({ text, price }),
         headers: {
@@ -205,7 +207,7 @@ export const createServices = (text, price) => {
 export const deleteServices = (id) => {
   return async (dispatch) => {
     try {
-     const res = await fetch(`http://localhost:3003/lawyers/service/${id}/delete/`, {
+     const res = await fetch(`${serverUrl}/lawyers/service/${id}/delete/`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -226,7 +228,7 @@ export const deleteServices = (id) => {
 export const loadServices = () => {
   return async (dispatch) => {
     try {
-      const res = await fetch(`http://localhost:3003/services`, {
+      const res = await fetch(`${serverUrl}/services`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -244,7 +246,7 @@ export const loadServices = () => {
 export const addServices = (id) => {
   return async (dispatch) => {
     try {
-      const res = await fetch(`http://localhost:3003/lawyers/service/add/${id}`, {
+      const res = await fetch(`${serverUrl}/lawyers/service/add/${id}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
@@ -262,7 +264,7 @@ export const addServices = (id) => {
 export const deleteServ = (id) => {
   return async (dispatch) => {
     try {
-      const res = await fetch(`http://localhost:3003/lawyers/service/delete/${id}`, {
+      const res = await fetch(`${serverUrl}/lawyers/service/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
