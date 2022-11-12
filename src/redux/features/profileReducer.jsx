@@ -160,6 +160,7 @@ export const editLawyersInfo = (name, surname, email) => {
       },
       body: JSON.stringify(editLawyersInfo),
     })
+
       .then((res) => res.json())
       .then((edit) => {
         dispatch({ type: "edit/lawyer/fulfilled", payload: edit });

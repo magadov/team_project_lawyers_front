@@ -1,10 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import css from "./header.module.css";
 import logo from "../../assets/logo.png";
 import SignIn from './Sign/SignIn';
 import LogIn from './Log/LogIn';
 import { useSelector } from 'react-redux';
+import Category from '../Categories';
 import Profile from "../Profile";
 
 const Header = () => {
@@ -39,32 +40,24 @@ const Header = () => {
         <div className={`collapse navbar-collapse  ${css.menu}`} id="navbarSupportedContent">
           <ul className={`navbar-nav me-auto mb-2 mb-lg-0 `}>
             <li className={`nav-item  ${css.nav}`}>
-              <NavLink className={`nav-link active ${css.whiteLink} ${css.dtt}`} aria-current="page" to="/categories">
-                Категории
-              </NavLink>
+              <Category/>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <a className={`nav-link ${css.whiteLink} active`} aria-current="page" href="#cont">
+              <a className={`nav-link active  ${css.whiteLink}`} aria-current="page" href="#cont">
                 Как это работает
               </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active ${css.whiteLink} ${css.dtt}`} aria-current="page" to="/">
-                Новости
-              </NavLink>
-            </li>
-            <li className={`nav-item ${css.nav}`}>
-              <a className={`nav-link active ${css.whiteLink}  ${css.dtt}`} aria-current="page" href="#contact">
+              <a className={`nav-link active  ${css.whiteLink}`} aria-current="page" href="#contact">
                 Контакты
               </a>
             </li>
             <li className={`nav-item ${css.nav}`}>
-              <NavLink className={`nav-link active ${css.whiteLink} ${css.dtt}`} aria-current="page" to="/">
+              <NavLink className={`nav-link active  ${css.whiteLink}`} aria-current="page" to="/">
                 О нас
               </NavLink>
             </li>
           </ul>
-
           {token ? <Profile/> : (<form className="d-flex">
             <SignIn />
             <LogIn />

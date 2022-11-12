@@ -1,0 +1,16 @@
+.cardDiv {
+  width: 18rem;
+  margin: 40px 50px 0 50px;
+  box-shadow: 0px 1px 17px 13px rgba(20, 24, 26, 0.2);
+  border: 0;
+  border-radius: 8px;
+}
+.cardDiv img {
+  width: 100%; /* Ширина изображений */
+  height: 250px; /* Высота изображении */
+  object-fit: cover; /* Вписываем фотографию в область */
+  border-radius: 8px 8px 0 0 ;
+}
+.main {
+  display: flex;
+}
