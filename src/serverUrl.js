@@ -5,5 +5,5 @@ export let serverUrl;
 if(NODE_ENV === 'development') {
   serverUrl = 'http://localhost:3003';
 } else {
-  serverUrl = 'https://app.onrender.com';
+  serverUrl = 'https://lawyers-frontend.onrender.com';
 }
