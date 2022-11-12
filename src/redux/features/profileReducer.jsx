@@ -1,6 +1,9 @@
+import { serverUrl } from '../../serverUrl';
+
 const initialState = {
   lawyer: [],
   categories: [],
+  services: [],
   error: null,
 };
 
@@ -44,12 +47,12 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         lawyer: { ...state.lawyer, ...action.payload },
       };
-    case "add/services/rejected":
+    case "create/services/rejected":
       return {
         ...state,
         error: action.error,
       };
-    case "add/services/fulfilled":
+    case "create/services/fulfilled":
       return {
         ...state,
         lawyer: { ...state.lawyer, ...action.payload },
@@ -59,6 +62,36 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         lawyer: { ...state.lawyer, ...action.payload },
       };
+    case "DELETE_SERVICES_REJECTED":
+      return {
+        ...state,
+        error: action.error,
+      };
+    case "LOAD_SERVICES":
+      return {
+        ...state,
+        services: action.payload
+      }
+    case "LOAD_SERVICES_REJECTED":
+      return {
+        ...state,
+        error: action.error,
+      };
+    case "add/services/fulfilled":
+      return {
+        ...state,
+        lawyer: { ...state.lawyer, ...action.payload },
+      };
+    case "DELETE_SERV":
+      return {
+        ...state,
+        lawyer: {...state.lawyer, ...action.payload }
+      }
+    case "DELETE_SERV_REJECTED":
+      return {
+        ...state,
+        error: action.message
+      }
     default:
       return state;
   }
@@ -67,7 +100,7 @@ export const profileReducer = (state = initialState, action) => {
 export const loadLawyer = () => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/lawyers/profile", {
+      const res = await fetch(`${serverUrl}/lawyers/profile`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -86,7 +119,7 @@ export const uploadAvatar = (file) => {
     const formData = new FormData();
     formData.append("img", file);
 
-    fetch("http://localhost:3003/lawyers/updateImg", {
+    fetch(`${serverUrl}/lawyers/updateImg`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -103,7 +136,7 @@ export const uploadAvatar = (file) => {
 export const loadCategories = () => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/categories");
+      const res = await fetch(`${serverUrl}/categories`);
       const json = await res.json();
       dispatch({ type: "load/categories/fulfilled", payload: json });
     } catch (e) {
@@ -119,7 +152,7 @@ export const editLawyersInfo = (name, surname, email) => {
     email,
   };
   return (dispatch) => {
-    fetch("http://localhost:3003/lawyers/edit", {
+    fetch(`${serverUrl}/lawyers/edit`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
@@ -138,7 +171,7 @@ export const editLawyersInfo = (name, surname, email) => {
 export const loadMyList = () => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/lawyers/profile", {
+      const res = await fetch(`${serverUrl}/lawyers/profile`, {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -156,9 +189,66 @@ export const loadMyList = () => {
 export const createServices = (text, price) => {
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3003/lawyers/add", {
+      const res = await fetch(`${serverUrl}/lawyers/add`, {
         method: "PATCH",
         body: JSON.stringify({ text, price }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const json = await res.json();
+      dispatch({ type: "create/services/fulfilled", payload: json });
+    } catch (e) {
+      dispatch({ type: "create/services/rejected", error: e.message });
+    }
+  };
+};
+
+export const deleteServices = (id) => {
+  return async (dispatch) => {
+    try {
+     const res = await fetch(`${serverUrl}/lawyers/service/${id}/delete/`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      const json =  await res.json()
+      console.log(json)
+      dispatch({
+        type: "DELETE_SERVICES",
+        payload: json,
+      });
+    }catch (e) {
+      dispatch({type: "DELETE_SERVICES_REJECTED", error: e.message })
+    }
+  };
+};
+
+export const loadServices = () => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`${serverUrl}/services`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      const json =  await res.json()
+      dispatch({
+        type: "LOAD_SERVICES",
+        payload: json,
+      });
+    }catch (e) {
+      dispatch({type: "LOAD_SERVICES_REJECTED", error: e.message })
+    }
+  };
+};
+export const addServices = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`${serverUrl}/lawyers/service/add/${id}`, {
+        method: "PATCH",
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -172,22 +262,22 @@ export const createServices = (text, price) => {
   };
 };
 
-export const deleteServices = (id) => {
+export const deleteServ = (id) => {
   return async (dispatch) => {
     try {
-     const res = await fetch(`http://localhost:3003/lawyers/service/${id}/delete/`, {
-        method: "PATCH",
+      const res = await fetch(`${serverUrl}/lawyers/service/delete/${id}`, {
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
       const json =  await res.json()
       dispatch({
-        type: "DELETE_SERVICES",
+        type: "DELETE_SERV",
         payload: json,
       });
     }catch (e) {
-      dispatch({type: "DELETE_SERVICES_REJECTED", error: e.message })
+      dispatch({type: "DELETE_SERV_REJECTED", error: e.message })
     }
   };
 };

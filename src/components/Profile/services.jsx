@@ -6,23 +6,14 @@ import styled from "styled-components";
 
 const Window = (props) => {
     const categories = useSelector(state => state.lawyerReducer.categories)
-    const services = useSelector((state) => state.lawyerReducer.services)
-    //
-    // const [serviceCat, setServiceCat] = useState(null);
-    //
-    // const filteredServ = services.filter()
-    //
-    // const handleChange = (e) => {
-    //     const {value} = e.target;
-    //     setServiceCat(value)
-    // }
-
 
     const dispatch =  useDispatch();
-
-    useEffect(() => {
-        dispatch(loadCategories())
-    }, [dispatch])
+    
+    
+   useEffect(() => {
+    dispatch(loadCategories());
+    dispatch(loadServices())
+  }, [dispatch]);
 
     return (
         <Modal
@@ -55,33 +46,29 @@ const Window = (props) => {
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
-    );
+    )
 };
 
+
 function Service() {
-    const CreateButton = styled.button `
-        background-color: white;
-        border: none;
-        &:hover {
-            border-bottom: 1px solid #1f90fa;
-        }
+  const CreateButton = styled.button`
+    background-color: white;
+    border: none;
+    &:hover {
+      border-bottom: 1px solid #1f90fa;
+    }
+  `;
+  const [modalShow, setModalShow] = React.useState(false);
 
-    `
-    const [modalShow, setModalShow] = React.useState(false);
+  return (
+    <>
+      <CreateButton onClick={() => setModalShow(true)}>
+        Выбрать услугу
+      </CreateButton>
 
-    return (
-        <>
-            <CreateButton  onClick={() => setModalShow(true)}>
-                Выбрать услугу
-            </CreateButton>
-
-            <Window
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
-        </>
-    );
+      <Window show={modalShow} onHide={() => setModalShow(false)} />
+    </>
+  );
 }
 
 export default Service;
-

@@ -1,3 +1,4 @@
+import { serverUrl } from '../../serverUrl';
 const initialState = {
   signIn: false,
   doLogin: false,
@@ -53,7 +54,7 @@ export const createLawyer = (login, password, name, surname) => {
   return async dispatch => {
     dispatch({type: 'application/signIn/pending'});
 
-    const response = await fetch('http://localhost:3003/lawyers/lawyer', {
+    const response = await fetch(`${serverUrl}/lawyers/lawyer`, {
       method: 'POST',
       body: JSON.stringify({ login, password, name, surname }),
       headers: {
@@ -74,7 +75,7 @@ export const auth = (login, password) => {
   return async dispatch => {
     dispatch({ type: 'application/login/pending' });
 
-    const response = await fetch('http://localhost:3003/lawyers/login', {
+    const response = await fetch(`${serverUrl}/lawyers/login`, {
       method: 'POST',
       body: JSON.stringify({login, password}),
       headers: {
