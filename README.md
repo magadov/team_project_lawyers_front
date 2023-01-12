@@ -5,32 +5,31 @@
 <p><a href="https://lawyers-frontend.onrender.com" target="_blank">🌎 Демо проекта </a></p>
 
 ## Предназначение проекта
-CRM для ведения учета деятельности детейлинг центра (какие услуги оказывались, кому и когда, расход/приход материала, учёт расходов)
+Данный проект предназначен как для юристов, которые могут зарегистрироваться, указав весь спектр оказываемых ими услуг, так и для обычных пользователей, которые ищут юристов для оказания тех или иных услуг.
 
 ### Функционал
 - Авторизация
-- Вывод услуг по категориям
-- Добавление/удаление машин по VIN-коду(запрос на удалённый API)
+- Добавление услуг по категория
 - Добавление/удаление услуг
 - Добавление/удаление категорий
-- Вывод журнала услуг
+- Возможность для зарегистрированных юристов добавления и удаления категорий/услуг
  
- ![png](https://github.com/magadov/detailing-front/blob/main/images/New%20Car.png)
+ ![png](https://github.com/magadov/team_project_lawyers_front/blob/main/images/lawyers.png)
  
  
-- Добавление/удаление клиентов
+- Вывод услуг по категориям
  
  ![png](https://github.com/magadov/detailing-front/blob/lastChanges/images/New%20car%202.png)
 
 
-- Вывод расходов по датам
+- Вывод юристов по карточкам 
 
- ![png](https://github.com/magadov/detailing-front/blob/lastChanges/images/New%20car%203.png)
+ ![png](https://github.com/magadov/team_project_lawyers_front/blob/main/images/lawyers%202.png)
 
 
-- Вывод отчёта по датам
+ ![png](https://github.com/magadov/team_project_lawyers_front/blob/main/images/lawyers%203.png)
  
- ![png](https://github.com/magadov/detailing-front/blob/main/images/New%20car%204.png)
+ ![png](https://github.com/magadov/team_project_lawyers_front/blob/main/images/lawyers%204.png)
 
 ---
 
@@ -55,7 +54,6 @@ npm run dev
 <p>
   <img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=for-the-badge&logo=react&logoColor=white" />
   <img alt="Github" src="https://img.shields.io/badge/-Github-black?style=for-the-badge&logo=github&logoColor=white" />
-  <img alt="MaterialUI" src="https://img.shields.io/badge/-MaterialUI-764ABC?style=for-the-badge&logo=MaterialUI&logoColor=white" />
   <img alt="Redux" src="https://img.shields.io/badge/-Redux-430098?style=for-the-badge&logo=redux&logoColor=white" />
   <img alt="Redux-Thunk" src="https://img.shields.io/badge/-Redux_Thunk-white?style=for-the-badge&logo=Redux&logoColor=430098" />
   <img alt="Prettier" src="https://img.shields.io/badge/-Prettier-430098?style=for-the-badge&logo=Prettier&logoColor=white" />
@@ -67,6 +65,7 @@ npm run dev
   <img alt="Nodejs" src="https://img.shields.io/badge/-Nodejs-43853d?style=for-the-badge&logo=Node.js&logoColor=white" />
   <img alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-yellow?style=for-the-badge&logo=JavaScript&logoColor=white" />
   <img alt="Bootstrap" src="https://img.shields.io/badge/-Bootstrap-430098?style=for-the-badge&logo=bootstrap&logoColor=white" />
+ <img alt="React-Bootstrap" src="https://img.shields.io/badge/-React_Bootstrap-430098?style=for-the-badge&logo=react-bootstrap&logoColor=white" />
   <img alt="Mongoose" src="https://img.shields.io/badge/-Mongoose-430098?style=for-the-badge&logo=Mongoose&logoColor=white" />
   <img alt="Express" src="https://img.shields.io/badge/-Express-430098?style=for-the-badge&logo=Express&logoColor=white" />
 </p>
@@ -79,8 +78,7 @@ npm run dev
 - [x] Вёрстка макета приложения
 - [x] Добавление/удаление услуг
 - [x] Организовать роутинг-маршрутизация внутри проекта
-- [x] Вывод данных по датам
+- [x] Реализация личного кабинета
 - [x] Изменение добавленных услуг 
-- [x] Вывод и расчёт по датам отчётов
 
 ---
