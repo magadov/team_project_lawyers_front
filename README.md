@@ -15,11 +15,6 @@
 - Возможность для зарегистрированных юристов добавления и удаления категорий/услуг
  
  ![png](https://github.com/magadov/team_project_lawyers_front/blob/main/images/lawyers.png)
- 
- 
-- Вывод услуг по категориям
- 
- ![png](https://github.com/magadov/detailing-front/blob/lastChanges/images/New%20car%202.png)
 
 
 - Вывод юристов по карточкам 
