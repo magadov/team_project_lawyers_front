@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Проект для юридической компании.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Проект выполнен для компании юристов.
 
-## Available Scripts
+<p><a href="https://lawyers-frontend.onrender.com" target="_blank">🌎 Демо проекта </a></p>
 
-In the project directory, you can run:
+## Предназначение проекта
+CRM для ведения учета деятельности детейлинг центра (какие услуги оказывались, кому и когда, расход/приход материала, учёт расходов)
 
-### `npm start`
+### Функционал
+- Авторизация
+- Вывод услуг по категориям
+- Добавление/удаление машин по VIN-коду(запрос на удалённый API)
+- Добавление/удаление услуг
+- Добавление/удаление категорий
+- Вывод журнала услуг
+ 
+ ![png](https://github.com/magadov/detailing-front/blob/main/images/New%20Car.png)
+ 
+ 
+- Добавление/удаление клиентов
+ 
+ ![png](https://github.com/magadov/detailing-front/blob/lastChanges/images/New%20car%202.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Вывод расходов по датам
 
-### `npm test`
+ ![png](https://github.com/magadov/detailing-front/blob/lastChanges/images/New%20car%203.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+- Вывод отчёта по датам
+ 
+ ![png](https://github.com/magadov/detailing-front/blob/main/images/New%20car%204.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Запуск проекта
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Для запуска проекта вам необходимо набрать команду в терминале:
 
-### `npm run eject`
+```javascript
+npm i
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Затем,
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+npm run dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Технологии проекта
 
-## Learn More
+<p>
+  <img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=for-the-badge&logo=react&logoColor=white" />
+  <img alt="Github" src="https://img.shields.io/badge/-Github-black?style=for-the-badge&logo=github&logoColor=white" />
+  <img alt="MaterialUI" src="https://img.shields.io/badge/-MaterialUI-764ABC?style=for-the-badge&logo=MaterialUI&logoColor=white" />
+  <img alt="Redux" src="https://img.shields.io/badge/-Redux-430098?style=for-the-badge&logo=redux&logoColor=white" />
+  <img alt="Redux-Thunk" src="https://img.shields.io/badge/-Redux_Thunk-white?style=for-the-badge&logo=Redux&logoColor=430098" />
+  <img alt="Prettier" src="https://img.shields.io/badge/-Prettier-430098?style=for-the-badge&logo=Prettier&logoColor=white" />
+  <img alt="JSON-Server" src="https://img.shields.io/badge/-JSON_Server-white?style=for-the-badge&logo=JSON&logoColor=black" />
+  <img alt="React-Router" src="https://img.shields.io/badge/-React_Router-black?style=for-the-badge&logo=react-router&logoColor=orange" />
+  <img alt="Prettier" src="https://img.shields.io/badge/-Prettier-grey?style=for-the-badge&logo=Prettier&logoColor=orange" />
+  <img alt="MongoDB" src="https://img.shields.io/badge/-MongoDB-grey?style=for-the-badge&logo=MongoDB&logoColor=orange" />
+  <img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img alt="Nodejs" src="https://img.shields.io/badge/-Nodejs-43853d?style=for-the-badge&logo=Node.js&logoColor=white" />
+  <img alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-yellow?style=for-the-badge&logo=JavaScript&logoColor=white" />
+  <img alt="Bootstrap" src="https://img.shields.io/badge/-Bootstrap-430098?style=for-the-badge&logo=bootstrap&logoColor=white" />
+  <img alt="Mongoose" src="https://img.shields.io/badge/-Mongoose-430098?style=for-the-badge&logo=Mongoose&logoColor=white" />
+  <img alt="Express" src="https://img.shields.io/badge/-Express-430098?style=for-the-badge&logo=Express&logoColor=white" />
+</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### В этом проекте я выполнял следующие задачи:
 
-### Code Splitting
+- [x] Создать react приложение
+- [x] Вёрстка макета приложения
+- [x] Добавление/удаление услуг
+- [x] Организовать роутинг-маршрутизация внутри проекта
+- [x] Вывод данных по датам
+- [x] Изменение добавленных услуг 
+- [x] Вывод и расчёт по датам отчётов
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
